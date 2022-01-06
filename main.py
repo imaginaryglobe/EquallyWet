@@ -8,6 +8,11 @@ TODO:
 2. calculate the slope between each of the points (slope ab, slope ac, and slope bc)
 3. something 
 
+
+
+
+
+clean up so it looks nicer TBD
 """
 
 
@@ -21,11 +26,14 @@ y1 = random.randint(-100, 100)
 y2 = random.randint(-100, 100)
 y3 = random.randint(-100, 100)
 
-
-
-
 a = (x1, y1)
 b = (x2, y2)
 c = (x3, y3)
 
+ab = (y2 - y1) / (x2 - x1)
+bc = (y3 - y2) / (x3 - x2)
+ac = (y3 - y1) / (x3 - x1)
+
+
 print(a, b, c)
+print(f"the slopes are {ab} for ab, {bc} for bc, and {ac} for ac.")
