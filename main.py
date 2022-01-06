@@ -34,8 +34,20 @@ ab = (y2 - y1) / (x2 - x1)
 bc = (y3 - y2) / (x3 - x2)
 ac = (y3 - y1) / (x3 - x1)
 
+def negative_reciprocal(slope):
+    # make it negative
+    slope *= -1
+    #reciprocal
+    slope = 1 / slope
 
+    return slope
 
-
+print("--------------------------------------")
 print(a, b, c)
 print(f"the slopes are {ab} for ab, {bc} for bc, and {ac} for ac.")
+
+nAB = negative_reciprocal(ab)
+nBC = negative_reciprocal(bc)
+nAC = negative_reciprocal(ac)
+print(f"the negative reciprocal slopes are {nAB}, {nBC}, and {nAC} for ab, bc, ac")
+print("--------------------------------------")
