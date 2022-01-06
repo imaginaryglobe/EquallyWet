@@ -4,9 +4,9 @@ finding the midpoint is finding the circumcenter of the  three x coordinates and
 
 """
 TODO:
-1. create three points, in this case they are named A, B, and C
-2. calculate the slope between each of the points (slope ab, slope ac, and slope bc)
-3. something 
+1. create three points, in this case they are named A, B, and C                                  done
+2. calculate the slope between each of the points (slope ab, slope ac, and slope bc)             done
+3. find the perpendicular bisectors of each line segment of the triangle (negative reciprocal)
 
 
 
@@ -33,6 +33,8 @@ c = (x3, y3)
 ab = (y2 - y1) / (x2 - x1)
 bc = (y3 - y2) / (x3 - x2)
 ac = (y3 - y1) / (x3 - x1)
+
+
 
 
 print(a, b, c)
