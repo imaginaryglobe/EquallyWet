@@ -6,7 +6,7 @@ finding the midpoint is finding the circumcenter of the  three x coordinates and
 TODO:
 1. create three points, in this case they are named A, B, and C
 2. calculate the slope between each of the points (slope ab, slope ac, and slope bc)
-3. 
+3. something 
 
 """
 
