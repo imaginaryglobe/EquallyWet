@@ -25,7 +25,10 @@ clean up so it looks nicer TBD
 
 import math 
 import random
+import ast
 
+
+points = []
 
 # picks random numbers for the random point locations on the grid, in this case the numbers are between -100 a100axi, inclusive. 
 x1 = random.randint(-100, 100)
@@ -69,11 +72,11 @@ def find_y_int(slope, point):
     # plug in the coordinate pair for y = mx + b as y and then solve for b
     b = point[1] - slope * point[0]
     return b
-
+#determining the y intercepts by passing in points
 yint_of_ab = find_y_int(nAB, midpoint_ab)
 yint_of_bc = find_y_int(nBC, midpoint_bc)
 yint_of_ac = find_y_int(nAC, midpoint_ac)
-
+# 
 ab_data = (midpoint_ab, yint_of_ab)
 bc_data = (midpoint_bc, yint_of_bc)
 ac_data = (midpoint_ac, yint_of_ac)
@@ -81,6 +84,20 @@ ac_data = (midpoint_ac, yint_of_ac)
 equation_ab = f"y = {nAB}x + {yint_of_ab}"
 equation_bc = f"y = {nBC}x + {yint_of_bc}"
 equation_ac = f"y = {nAC}x + {yint_of_ac}"
+
+def return_y_coordinates(equation):
+    formula = equation[4:]
+    formula = formula.replace("x", " * x")
+    for i in range(100):
+        new_equation = formula.replace("x", str(i))
+        new_y = eval(new_equation)
+        new_coordinate_set = (i, new_y)
+        points.append(new_coordinate_set)
+
+
+return_y_coordinates(equation_ab)
+
+
 # this section of code just tells you what the slopes and perpendicular bisector slopes are
 print("\n----------------------------------------------------------------------------------")
 print(a, b, c)
@@ -89,4 +106,5 @@ print(f"normal slopes: ab({ab}), bc({bc}), ac({ac}) \n")
 print(f"perpendicular slopes: ab({nAB}), bc({nBC}), and ac({nAC})\n")
 print(f"y intercepts of perp. slopes ab({yint_of_ab}), bc({yint_of_bc}), and ac({yint_of_ac}) \n")
 print(f"equations of perp line: ab({equation_ab}), bc({equation_bc}), ac({equation_ac})")
+print(points)
 print("------------------------------------------------------------------------------------\n")
