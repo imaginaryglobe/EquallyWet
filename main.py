@@ -49,6 +49,7 @@ midpoint_bc = (((x3 + x2) / 2), ((y3 + y2) / 2))
 midpoint_ac = (((x1 + x3) / 2), ((y1 + y3) / 2))
 
 # this section of code finds the slope of the line by using rise over run equation.
+
 ab = (y2 - y1) / (x2 - x1)
 bc = (y3 - y2) / (x3 - x2)
 ac = (y3 - y1) / (x3 - x1)
@@ -101,15 +102,6 @@ return_y_coordinates(equation_ab)
 return_y_coordinates(equation_bc)
 
 
-def check_similarities(list1, list2):
-    for i in list1:
-        for j in list2:
-            if i == j:
-                print(i, j)
-                
-
-check_similarities(points[0], points[1])
-
 
 # this section of code just tells you what the slopes and perpendicular bisector slopes are
 print("\n----------------------------------------------------------------------------------")
@@ -119,5 +111,5 @@ print(f"normal slopes: ab({ab}), bc({bc}), ac({ac}) \n")
 print(f"perpendicular slopes: ab({nAB}), bc({nBC}), and ac({nAC})\n")
 print(f"y intercepts of perp. slopes ab({yint_of_ab}), bc({yint_of_bc}), and ac({yint_of_ac}) \n")
 print(f"equations of perp line: ab({equation_ab}), bc({equation_bc}), ac({equation_ac})")
-
+print(points)
 print("------------------------------------------------------------------------------------\n")
