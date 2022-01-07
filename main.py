@@ -36,6 +36,11 @@ a = (x1, y1)
 b = (x2, y2)
 c = (x3, y3)
 
+
+midpoint_ab = (((x1 + x2) / 2), ((y1 + y2) / 2))
+midpoint_bc = (((x3 + x2) / 2), ((y3 + y2) / 2))
+midpoint_ac = (((x1 + x3) / 2), ((y1 + y3) / 2))
+
 # this section of code finds the slope of the line by using rise over run equation.
 ab = (y2 - y1) / (x2 - x1)
 bc = (y3 - y2) / (x3 - x2)
@@ -50,7 +55,9 @@ def negative_reciprocal(slope):
     slope = 1 / slope
 
     return slope
-
+nAB = negative_reciprocal(ab)
+nBC = negative_reciprocal(bc)
+nAC = negative_reciprocal(ac)
 
 # find every single point on each line and check if they intersect
 def find_y_int(slope, point):
@@ -63,15 +70,11 @@ def find_y_int(slope, point):
 # this section of code just tells you what the slopes and perpendicular bisector slopes are
 print("--------------------------------------")
 print(a, b, c)
-print(f"the slopes are {ab} for ab, {bc} for bc, and {ac} for ac.")
+print(f"normal slopes: {ab}, {bc}, {ac} (ab, bc, ac)")
 
-nAB = negative_reciprocal(ab)
-nBC = negative_reciprocal(bc)
-nAC = negative_reciprocal(ac)
-print(f"the negative reciprocal slopes are {nAB}, {nBC}, and {nAC} for ab, bc, ac")
-
-yint_of_ab = find_y_int(ab, a)
-yint_of_bc = find_y_int(bc, b)
-yint_of_ac = find_y_int(ac, c)
-print(yint_of_ab, yint_of_bc, yint_of_ac)
+print(f"negative reciprocal slopes: {nAB}, {nBC}, and {nAC} for ab, bc, ac")
+yint_of_ab = find_y_int(nAB, midpoint_ab)
+yint_of_bc = find_y_int(nBC, midpoint_bc)
+yint_of_ac = find_y_int(nAC, midpoint_ac)
+print(f"the y intercepts of the NRS should be {yint_of_ab}, {yint_of_bc}, and {yint_of_ac} for ab, bc, ac")
 print("--------------------------------------")
