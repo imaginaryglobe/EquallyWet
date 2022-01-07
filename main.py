@@ -7,6 +7,10 @@ TODO:
 1. create three points, in this case they are named A, B, and C                                  done
 2. calculate the slope between each of the points (slope ab, slope ac, and slope bc)             done
 3. find the perpendicular bisectors of each line segment of the triangle (negative reciprocal)   done
+4. find the circumcenter
+    a. add error cases
+        i. these include collinear points
+        ii. also points that have the same coordinates
 
 
 
@@ -47,6 +51,15 @@ def negative_reciprocal(slope):
 
     return slope
 
+
+# find every single point on each line and check if they intersect
+def find_y_int(slope, point):
+    #finding the equation of the line is simple.
+    # plug in the coordinate pair for y = mx + b as y and then solve for b
+    b = point[1] - slope * point[0]
+    return b
+
+
 # this section of code just tells you what the slopes and perpendicular bisector slopes are
 print("--------------------------------------")
 print(a, b, c)
@@ -56,4 +69,9 @@ nAB = negative_reciprocal(ab)
 nBC = negative_reciprocal(bc)
 nAC = negative_reciprocal(ac)
 print(f"the negative reciprocal slopes are {nAB}, {nBC}, and {nAC} for ab, bc, ac")
+
+yint_of_ab = find_y_int(ab, a)
+yint_of_bc = find_y_int(bc, b)
+yint_of_ac = find_y_int(ac, c)
+print(yint_of_ab, yint_of_bc, yint_of_ac)
 print("--------------------------------------")
