@@ -23,7 +23,8 @@ clean up so it looks nicer TBD
 import math 
 import random
 
-# picks random numbers for the random point locations on the grid, in this case the numbers are between -100 and 100, inclusive. 
+
+# picks random numbers for the random point locations on the grid, in this case the numbers are between -100 a100axi, inclusive. 
 x1 = random.randint(-100, 100)
 x2 = random.randint(-100, 100)
 x3 = random.randint(-100, 100)
@@ -53,8 +54,8 @@ def negative_reciprocal(slope):
     slope *= -1
     #reciprocal
     slope = 1 / slope
-
     return slope
+
 nAB = negative_reciprocal(ab)
 nBC = negative_reciprocal(bc)
 nAC = negative_reciprocal(ac)
@@ -66,15 +67,21 @@ def find_y_int(slope, point):
     b = point[1] - slope * point[0]
     return b
 
-
-# this section of code just tells you what the slopes and perpendicular bisector slopes are
-print("--------------------------------------")
-print(a, b, c)
-print(f"normal slopes: {ab}, {bc}, {ac} (ab, bc, ac)")
-
-print(f"negative reciprocal slopes: {nAB}, {nBC}, and {nAC} for ab, bc, ac")
 yint_of_ab = find_y_int(nAB, midpoint_ab)
 yint_of_bc = find_y_int(nBC, midpoint_bc)
 yint_of_ac = find_y_int(nAC, midpoint_ac)
-print(f"the y intercepts of the NRS should be {yint_of_ab}, {yint_of_bc}, and {yint_of_ac} for ab, bc, ac")
-print("--------------------------------------")
+
+ab_data = (midpoint_ab, yint_of_ab)
+bc_data = (midpoint_bc, yint_of_bc)
+ac_data = (midpoint_ac, yint_of_ac)
+
+
+
+# this section of code just tells you what the slopes and perpendicular bisector slopes are
+print("\n----------------------------------------------------------------------------------")
+print(a, b, c)
+print(f"normal slopes: ({ab}), ({bc}), ({ac}) (ab, bc, ac)\n")
+
+print(f"perpendicular slopes: ({nAB}), ({nBC}), and ({nAC}) (ab, bc, ac)\n")
+print(f"y intercepts of perp. slopes ({yint_of_ab}), ({yint_of_bc}), and ({yint_of_ac}) (ab, bc, ac)\n")
+print("------------------------------------------------------------------------------------\n")
