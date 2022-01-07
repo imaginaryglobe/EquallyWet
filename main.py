@@ -25,7 +25,7 @@ clean up so it looks nicer TBD
 
 import math 
 import random
-import ast
+import itertools
 
 
 points = []
@@ -92,10 +92,23 @@ def return_y_coordinates(equation):
         new_equation = formula.replace("x", str(i))
         new_y = eval(new_equation)
         new_coordinate_set = (i, new_y)
-        points.append(new_coordinate_set)
+        separator = []
+        separator.append(new_coordinate_set)
+    points.append(separator)
 
 
 return_y_coordinates(equation_ab)
+return_y_coordinates(equation_bc)
+
+
+def check_similarities(list1, list2):
+    for i in list1:
+        for j in list2:
+            if i == j:
+                print(i, j)
+                
+
+check_similarities(points[0], points[1])
 
 
 # this section of code just tells you what the slopes and perpendicular bisector slopes are
@@ -106,5 +119,5 @@ print(f"normal slopes: ab({ab}), bc({bc}), ac({ac}) \n")
 print(f"perpendicular slopes: ab({nAB}), bc({nBC}), and ac({nAC})\n")
 print(f"y intercepts of perp. slopes ab({yint_of_ab}), bc({yint_of_bc}), and ac({yint_of_ac}) \n")
 print(f"equations of perp line: ab({equation_ab}), bc({equation_bc}), ac({equation_ac})")
-print(points)
+
 print("------------------------------------------------------------------------------------\n")
