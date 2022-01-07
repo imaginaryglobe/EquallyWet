@@ -11,6 +11,9 @@ TODO:
     a. add error cases
         i. these include collinear points
         ii. also points that have the same coordinates
+    b. somehow check the points on each line and add them to a list 
+        i. probably in integer increments of 1, if the distance between all three lines is < 1
+        at any point, i will call that an intersection probably
 
 
 
@@ -75,13 +78,15 @@ ab_data = (midpoint_ab, yint_of_ab)
 bc_data = (midpoint_bc, yint_of_bc)
 ac_data = (midpoint_ac, yint_of_ac)
 
-
-
+equation_ab = f"y = {nAB}x + {yint_of_ab}"
+equation_bc = f"y = {nBC}x + {yint_of_bc}"
+equation_ac = f"y = {nAC}x + {yint_of_ac}"
 # this section of code just tells you what the slopes and perpendicular bisector slopes are
 print("\n----------------------------------------------------------------------------------")
 print(a, b, c)
-print(f"normal slopes: ({ab}), ({bc}), ({ac}) (ab, bc, ac)\n")
+print(f"normal slopes: ab({ab}), bc({bc}), ac({ac}) \n")
 
-print(f"perpendicular slopes: ({nAB}), ({nBC}), and ({nAC}) (ab, bc, ac)\n")
-print(f"y intercepts of perp. slopes ({yint_of_ab}), ({yint_of_bc}), and ({yint_of_ac}) (ab, bc, ac)\n")
+print(f"perpendicular slopes: ab({nAB}), bc({nBC}), and ac({nAC})\n")
+print(f"y intercepts of perp. slopes ab({yint_of_ab}), bc({yint_of_bc}), and ac({yint_of_ac}) \n")
+print(f"equations of perp line: ab({equation_ab}), bc({equation_bc}), ac({equation_ac})")
 print("------------------------------------------------------------------------------------\n")
