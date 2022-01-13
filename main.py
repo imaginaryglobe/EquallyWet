@@ -17,26 +17,35 @@ TODO:
 
 
 
+system of equations solver @https://github.com/jakegoodman01/kanu
 
 
 clean up so it looks nicer TBD
 """
 
 
-import math 
 import random
-import itertools
+from kanu.equation import solve_single_linear_equation
 
-
-points = []
-
-# picks random numbers for the random point locations on the grid, in this case the numbers are between -100 a100axi, inclusive. 
+# picks random numbers for the random point locations on the grid, in this case the numbers are between -100 & 100, inclusive. 
 x1 = random.randint(-100, 100)
 x2 = random.randint(-100, 100)
 x3 = random.randint(-100, 100)
 y1 = random.randint(-100, 100)
 y2 = random.randint(-100, 100)
 y3 = random.randint(-100, 100)
+
+
+if x1 == x2 and y1 == y2:
+    print("point(x1, y1) and point(x2, y2) are the same point")
+    exit()
+
+if x2 == x3 and y2 == y3:
+    print("point(x2,y2) and point(x3, y3) are the same point")
+    exit()
+if x1 == x3 and y1 == y3:
+    print("point(x1,y1) and (x3, y3) are the same point")
+    exit()
 
 # put the points into ordered pairs
 a = (x1, y1)
@@ -86,23 +95,24 @@ equation_ab = f"y = {nAB}x + {yint_of_ab}"
 equation_bc = f"y = {nBC}x + {yint_of_bc}"
 equation_ac = f"y = {nAC}x + {yint_of_ac}"
 
-def return_y_coordinates(equation):
-    formula = equation[4:]
-    formula = formula.replace("x", " * x")
-    for i in range(100):
-        new_equation = formula.replace("x", str(i))
-        new_y = eval(new_equation)
-        new_coordinate_set = (i, new_y)
-        separator = []
-        separator.append(new_coordinate_set)
-    points.append(separator)
+
+N_ab = f"y = {nAB}x + {yint_of_ab}"
+N_bc = f"y = {nBC}x + {yint_of_bc}"
+N_ac = f"y = {nAC}x + {yint_of_ac}"
+
+system = f"{nAB}x + {yint_of_ab} = {nBC}x + {yint_of_bc}"
+
+x = solve_single_linear_equation(system)
 
 
-return_y_coordinates(equation_ab)
-return_y_coordinates(equation_bc)
+def solve_remaining_equation(x_cor):
+    final_answer = float(nAB) * float(x_cor) + yint_of_ab
+    return final_answer
 
-
-
+y = solve_remaining_equation(x)
+x = float(x)
+y = float(y)
+circumcenter = (x, y)
 # this section of code just tells you what the slopes and perpendicular bisector slopes are
 print("\n----------------------------------------------------------------------------------")
 print(a, b, c)
@@ -111,5 +121,5 @@ print(f"normal slopes: ab({ab}), bc({bc}), ac({ac}) \n")
 print(f"perpendicular slopes: ab({nAB}), bc({nBC}), and ac({nAC})\n")
 print(f"y intercepts of perp. slopes ab({yint_of_ab}), bc({yint_of_bc}), and ac({yint_of_ac}) \n")
 print(f"equations of perp line: ab({equation_ab}), bc({equation_bc}), ac({equation_ac})")
-print(points)
+print(circumcenter)
 print("------------------------------------------------------------------------------------\n")
