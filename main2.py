@@ -17,17 +17,15 @@ TODO:
 
 
 
+system of equations solver @https://github.com/jakegoodman01/kanu
 
 
 clean up so it looks nicer TBD
 """
 
 
-import math 
 import random
-import itertools
-
-
+from kanu.equation import solve_single_linear_equation
 points = []
 
 # picks random numbers for the random point locations on the grid, in this case the numbers are between -100 & 100, inclusive. 
@@ -98,22 +96,15 @@ equation_ab = f"y = {nAB}x + {yint_of_ab}"
 equation_bc = f"y = {nBC}x + {yint_of_bc}"
 equation_ac = f"y = {nAC}x + {yint_of_ac}"
 
-def return_y_coordinates(equation):
-    formula = equation[4:]
-    formula = formula.replace("x", " * x")
-    for i in range(100):
-        new_equation = formula.replace("x", str(i))
-        new_y = eval(new_equation)
-        new_coordinate_set = (i, new_y)
-        separator = []
-        separator.append(new_coordinate_set)
-    points.append(separator)
 
+N_ab = f"y = {nAB}x + {yint_of_ab}"
+N_bc = f"y = {nBC}x + {yint_of_bc}"
+N_ac = f"y = {nAC}x + {yint_of_ac}"
 
-return_y_coordinates(equation_ab)
-return_y_coordinates(equation_bc)
+system = f"{nAB}x + {yint_of_ab} = {nBC}x + {yint_of_bc}"
 
-
+answer = solve_single_linear_equation(system)
+print(answer)
 
 # this section of code just tells you what the slopes and perpendicular bisector slopes are
 print("\n----------------------------------------------------------------------------------")
