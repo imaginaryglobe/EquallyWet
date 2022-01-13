@@ -69,4 +69,4 @@ def solve_single_linear_equation(equation: str) -> str:
         ls = OperatorList(ls.members[0], divisor, operation='/')
         rs = OperatorList(rs.members[0], divisor, operation='/')
 
-    return f'{ls.print()} = {rs.print()}'
+    return rs.print()
