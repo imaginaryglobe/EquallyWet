@@ -37,22 +37,14 @@ y2 = random.randint(-100, 100)
 y3 = random.randint(-100, 100)
 
 
-if x1 == x2 and y1 == y2:
-    print("point(x1, y1) and point(x2, y2) are the same point")
-    exit()
-
-if x2 == x3 and y2 == y3:
-    print("point(x2,y2) and point(x3, y3) are the same point")
-    exit()
-if x1 == x3 and y1 == y3:
-    print("point(x1,y1) and (x3, y3) are the same point")
-    exit()
-
 # put the points into ordered pairs
 a = (x1, y1)
 b = (x2, y2)
 c = (x3, y3)
 
+if a == b or b == c or a == c:
+    print("there are at least 2 points that are the same so no circumcenter because no triangle")
+    exit()
 
 midpoint_ab = (((x1 + x2) / 2), ((y1 + y2) / 2))
 midpoint_bc = (((x3 + x2) / 2), ((y3 + y2) / 2))
@@ -83,6 +75,21 @@ def find_y_int(slope, point):
     # plug in the coordinate pair for y = mx + b as y and then solve for b
     b = point[1] - slope * point[0]
     return b
+
+# collinear function taken from https://bit.ly/339lJQS
+def collinear(x1, y1, x2, y2, x3, y3): 
+    a = x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2) 
+  
+    if (a == 0): 
+        return True
+    else: 
+        return False
+  
+is_collinear = collinear(x1, y1, x2, y2, x3, y3)
+if is_collinear == True:
+    print("the points are collinear so there is no circumcenter because there is no triangle")
+    exit()
+
 #determining the y intercepts by passing in points
 yint_of_ab = find_y_int(nAB, midpoint_ab)
 yint_of_bc = find_y_int(nBC, midpoint_bc)
