@@ -32,9 +32,9 @@ points = []
 x1 = random.randint(-100, 100)
 x2 = random.randint(-100, 100)
 x3 = random.randint(-100, 100)
-y1 = random.randint(-100, 100)
-y2 = random.randint(-100, 100)
-y3 = random.randint(-100, 100)
+y1 = 0
+y2 = 0
+y3 = 0
 
 
 # put the points into ordered pairs
@@ -62,7 +62,12 @@ def negative_reciprocal(slope):
     # make it negative
     slope *= -1
     #reciprocal
-    slope = 1 / slope
+    try:
+        slope = 1 / slope
+    except ZeroDivisionError:
+        print("the slope between 2 points are 0")
+        exit()
+
     return slope
 
 nAB = negative_reciprocal(ab)
