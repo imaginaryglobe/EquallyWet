@@ -103,9 +103,17 @@ N_ac = f"y = {nAC}x + {yint_of_ac}"
 
 system = f"{nAB}x + {yint_of_ab} = {nBC}x + {yint_of_bc}"
 
-answer = solve_single_linear_equation(system)
-print(answer)
+x = solve_single_linear_equation(system)
 
+
+def solve_remaining_equation(x_cor):
+    final_answer = float(nAB) * float(x_cor) + yint_of_ab
+    return final_answer
+
+y = solve_remaining_equation(x)
+x = float(x)
+y = float(y)
+circumcenter = (x, y)
 # this section of code just tells you what the slopes and perpendicular bisector slopes are
 print("\n----------------------------------------------------------------------------------")
 print(a, b, c)
@@ -114,5 +122,5 @@ print(f"normal slopes: ab({ab}), bc({bc}), ac({ac}) \n")
 print(f"perpendicular slopes: ab({nAB}), bc({nBC}), and ac({nAC})\n")
 print(f"y intercepts of perp. slopes ab({yint_of_ab}), bc({yint_of_bc}), and ac({yint_of_ac}) \n")
 print(f"equations of perp line: ab({equation_ab}), bc({equation_bc}), ac({equation_ac})")
-print(points)
+print(circumcenter)
 print("------------------------------------------------------------------------------------\n")
